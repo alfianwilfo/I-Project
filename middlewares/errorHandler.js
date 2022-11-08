@@ -19,6 +19,8 @@ function errorHandler(err, req, res, next) {
     err.errors[0].message === "User.password cannot be null"
   ) {
     res.status(401).json({ message: "Enter your password" });
+  } else {
+    res.status(500).json({ message: "Internal server error" });
   }
 }
 module.exports = errorHandler;
