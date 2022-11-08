@@ -5,6 +5,12 @@ class UserController {
   static async register(req, res, next) {
     try {
       let { email, password } = req.body;
+      if (!email) {
+        throw { name: "email null" };
+      }
+      if (!password) {
+        throw { name: "password null" };
+      }
       let regis = await User.create({ email, password });
       res.status(201).json({ id: regis.id, email: regis.email });
     } catch (error) {
@@ -14,6 +20,12 @@ class UserController {
   static async login(req, res, next) {
     try {
       let { email, password } = req.body;
+      if (!email) {
+        throw { name: "email null" };
+      }
+      if (!password) {
+        throw { name: "password null" };
+      }
       let findUser = await User.findOne({ where: { email } });
       // console.log(findUser);
       if (!findUser) {
