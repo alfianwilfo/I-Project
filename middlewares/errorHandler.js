@@ -1,5 +1,5 @@
 function errorHandler(err, req, res, next) {
-  //   console.log(err, "??");
+  console.log(err, "??");
   if (err.name === "SequelizeUniqueConstraintError") {
     res.status(400).json({ message: err.errors[0].message });
   } else if (err.name === "Invalid email or password") {
@@ -14,6 +14,8 @@ function errorHandler(err, req, res, next) {
     err.errors[0].message === "User.email cannot be null"
   ) {
     res.status(401).json({ message: "Enter your email" });
+  } else if (err.errors[0].message === "Validation isEmail on email failed") {
+    res.status(401).json({ message: "Enter your email in email format" });
   } else if (
     err.errors[0].message === "Validation notEmpty on password failed" ||
     err.errors[0].message === "User.password cannot be null"
