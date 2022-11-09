@@ -1,5 +1,5 @@
 function errorHandler(err, req, res, next) {
-  // console.log(err);
+  console.log(err);
   if (err.name === "email null") {
     res.status(401).json({ message: "Enter your email" });
   } else if (err.name === "password null") {
