@@ -32,6 +32,9 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: { message: `Password can't be null` },
         },
       },
+      status: {
+        type: DataTypes.STRING,
+      },
     },
     {
       sequelize,
@@ -40,6 +43,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   User.beforeCreate(async (user) => {
     user.password = hash(user.password);
+    user.status = "Basic";
   });
   return User;
 };
