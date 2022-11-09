@@ -3,7 +3,7 @@ class Payment {
   static async getPayRequest(req, res, next) {
     try {
       // let inf = infin
-      const randomId = Math.floor(Math.random() * Infinity);
+      const randomId = Math.floor(Math.random() * 10000000);
       let url = "https://app.sandbox.midtrans.com/snap/v1/transactions";
       const config = {
         headers: {

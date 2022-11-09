@@ -7,4 +7,5 @@ app.post("/register", UserController.register);
 app.post("/login", UserController.login);
 app.get("/news", IndexController.getNews);
 app.get("/payment", PaymentController.getPayRequest);
+app.fetch("/status", UserController.changeStatus);
 module.exports = app;

@@ -91,6 +91,12 @@ class UserController {
       next(error);
     }
   }
+  static async changeStatus(req, res, send) {
+    try {
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = UserController;
