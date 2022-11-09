@@ -1,5 +1,5 @@
 let axios = require("axios");
-let { Transaction } = require("../models/index");
+let { Transaction, User } = require("../models/index");
 class Payment {
   static async getPayRequest(req, res, next) {
     try {
@@ -40,6 +40,21 @@ class Payment {
         orderId,
       });
       // console.log(req.body);
+    } catch (error) {
+      next(error);
+    }
+  }
+  static async pay(req, res, next) {
+    try {
+      let { order_id } = req.query;
+      console.log(order_id);
+      let findTransaction = await Transaction.findOne({
+        where: { orderId: order_id },
+      });
+      let update = await User.update(
+        { status: "Premium" },
+        { where: { email: findTransaction.email } }
+      );
     } catch (error) {
       next(error);
     }

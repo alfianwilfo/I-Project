@@ -8,5 +8,6 @@ app.post("/login", UserController.login);
 app.get("/news", IndexController.getNews);
 app.get("/payment", PaymentController.getPayRequest);
 app.post("/payment", PaymentController.postPayment);
+app.get("/pay", PaymentController.pay);
 // app.("/status", UserController.changeStatus);
 module.exports = app;
