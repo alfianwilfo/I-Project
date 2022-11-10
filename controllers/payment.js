@@ -55,6 +55,7 @@ class Payment {
         { status: "Premium" },
         { where: { email: findTransaction.email } }
       );
+      res.send("YOUR ACCOUNT ALREADY PREMIUM");
     } catch (error) {
       next(error);
     }
