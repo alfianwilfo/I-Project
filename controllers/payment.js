@@ -39,6 +39,7 @@ class Payment {
         token,
         orderId,
       });
+      res.status(201).json({ message: "payment added to database" });
       // console.log(req.body);
     } catch (error) {
       next(error);
@@ -47,7 +48,7 @@ class Payment {
   static async pay(req, res, next) {
     try {
       let { order_id } = req.query;
-      console.log(order_id);
+      // console.log(order_id);
       let findTransaction = await Transaction.findOne({
         where: { orderId: order_id },
       });
@@ -55,7 +56,7 @@ class Payment {
         { status: "Premium" },
         { where: { email: findTransaction.email } }
       );
-      res.send("YOUR ACCOUNT ALREADY PREMIUM");
+      res.status(201).json({ message: "YOUR ACCOUNT ALREADY PREMIUM" });
     } catch (error) {
       next(error);
     }
